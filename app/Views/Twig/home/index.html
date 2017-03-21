@@ -1,0 +1,40 @@
+{% extends "layouts/master.html" %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Jumbotron Header -->
+        <header class="jumbotron hero-spacer">
+            <h1>My Next Fishing Boat!</h1>
+        </header>
+        <!-- Input -->
+        <form class="form-horizontal" method="GET" action="/calculate">
+            <div class="form-group">
+                <label for="hl" class="col-sm-2 control-label">Hull Length</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="hl" name="hl" placeholder="26">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="ba" class="col-sm-2 control-label">Buttock Angle</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="ba" name="ba" placeholder="2">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="disp" class="col-sm-2 control-label">Displacement</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="disp" name="disp" placeholder="25000">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layouts/master.html" %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Hull Speed</th>
+                    <th>HP</th>
+                    <th>SL Ratio / CW</th>
+                    <th>Hull Length</th>
+                    <th>Buttock Angle</th>
+                    <th>Displacement</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% set step = hullspeed|round(0, 'ceil') - hullspeed %}
+                {% for speed in range(hullspeed, 30, step ? step : 1) %}
+                    <tr>
+                        <td>{{ speed }} knots</td>
+                        <td>{{ calculator.calculateHorsePower(speed) }}</td>
+                        <td>{{ calculator.calculateSLRatio() }} / {{ calculator.calculateCW() }}</td>
+                        <td>{{ calculator.getHullLength() }}</td>
+                        <td>{{ calculator.getButtockAngle() }}</td>
+                        <td>{{ calculator.getDisplacement() }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
