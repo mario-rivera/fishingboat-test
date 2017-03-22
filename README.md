@@ -1,9 +1,22 @@
 Fishing Boat
 ============
 
-## Composer Dependencies
-Simply run composer install before running the application.
+## Installation
 
-## Optional Vagrant File
-Run vagrant up and visit the VM's ip in the web browser to run the application.
-The composer dependencies have to be installed before running the application.
+There are three options:
+
+### Docker
+On a shell simply run the command "make install"
+The Makefile will pull the images and build the project.
+Then visit http://localhost:8080
+
+### Vagrant
+Run "vagrant up".
+When the machine boots run "vagrant ssh".
+Change directory to "/var/www" and run "composer install". 
+Visit the virtual machine's ip in the web browser to run the application.
+
+### Old Fashioned
+Clone the project into any machine with php and apache installed.
+Run composer install.
+Visit the document root of wherever this project lives.
