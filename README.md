@@ -22,5 +22,5 @@ Run composer install.
 Visit the document root of wherever this project lives.
 
 ## Note
-Validation has been oversimplified. Working with any input and defaulting
-to some sensible values when they are empty.
+Validation has been oversimplified.  
+But there is some basic input validation and very basic error handling.

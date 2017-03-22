@@ -16,6 +16,9 @@ class HomeController{
     }
     
     public function getIndex(){
-        return $this->twig->render('home/index.html', []);
+        return $this->twig->render('home/index.html', [
+            'error' => ( empty($_GET['e']) ) ? null : $_GET['e'],
+            'query' => $_GET
+        ]);
     }
 }

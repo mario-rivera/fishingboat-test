@@ -1,6 +1,8 @@
 <?php 
 namespace App\Models;
 
+use Respect\Validation\Validator;
+
 class HPCalculator{
     /**
      * The hull length.
@@ -25,27 +27,22 @@ class HPCalculator{
      
      /**
      * Set the minimum properties required for the calculation.
-     * We could be doing some complex validation here but for purposes of this test
-     * I will simply set the potential errors to some sensible defaults.
+     * Basic validation of parameters.
      *
      * @param array params
      */
      public function setParametersFromRequest( array $params ){
-         // could be performing validations and returing errors from HRTime\PerformanceCounter
-         // I am over simplifying this method
+         // Note that this could al very well be float values
+         Validator::intVal()->positive()->setName("Hull Length")->check( $params['hl'] );
+         $this->hull_length = $params['hl'];
          
-         // also note that this could al very well be float values
+         Validator::intVal()->between(2, 7)->setName("Buttock Angle")->check( $params['ba'] );
+         $this->buttockangle = $params['ba'];
          
-         $this->hull_length = empty( intval($params['hl']) ) ? 26 : abs( intval($params['hl']) );
+         Validator::intVal()->positive()->setName("Displacement")->check( $params['disp'] );
+         $this->displacement = $params['disp'];
          
-         $this->buttockangle = empty( intval($params['ba']) ) ? 2 : abs( intval($params['ba']) );
-         if( $this->buttockangle < 2 || $this->buttockangle > 7 ){
-             $this->buttockangle = 2;
-         }
-         
-         $this->displacement = empty( intval($params['disp']) ) ? 10000 : abs( intval($params['disp']) );
-         
-         return true;
+         return $this;
      }
      
      public function calculateSLRatio(){
